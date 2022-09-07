@@ -2,7 +2,7 @@
 
 <div class="editar">
     <span>Editar estadio</span>
-    <button>Guardar</button>
+    <button @click="guardar(array)">Guardar</button>
 </div>
 <div class="contenido">
     <div class="infoGeneral">
@@ -11,16 +11,16 @@
         <div class="form">
             <div class="f1">
                 <label>Nombre del estadio</label><br>
-                <input type="text" v-model="estadio.titulo"><br>
+                <input type="text" v-model="array[1]"><br>
                 <label>Acerca del estadio</label><br>
-                <textarea v-model="estadio.info"></textarea><br>
+                <textarea v-model="array[4]"></textarea><br>
                 
             </div>
             <div class="f2">
                 <label>País</label><br>
-                <input type="text" v-model="estadio.pais"><br>
+                <input type="text" v-model="array[3]"><br>
                 <label>Ciudad</label><br>
-                <input type="text" v-model="estadio.ciudad"><br>
+                <input type="text" v-model="array[2]"><br>
                 <label>Tipo de terreno</label><br>
                 <select>
                     <option v-for="e of estadios">{{e.nomTerreno}}</option>
@@ -45,18 +45,32 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 
     export default{
         name:"EditarEstadio",
-        
+        mounted(){
+            
+        },
         data(){
             return{
-                estadio:JSON.parse(this.$route.params.id)
+                estadio:JSON.parse(this.$route.params.id),
+                
+                array:[
+                    JSON.parse(this.$route.params.id).id,
+                    JSON.parse(this.$route.params.id).titulo,
+                    JSON.parse(this.$route.params.id).ciudad,
+                    JSON.parse(this.$route.params.id).pais,
+                    JSON.parse(this.$route.params.id).info
+                ],
+
             }
         },
         computed:{
             ...mapState(['estadios'])
+        },
+        methods:{
+            ...mapMutations(['guardar'])
         }
     }
 </script>

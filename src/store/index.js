@@ -1,9 +1,11 @@
+import router from '@/router';
 import { createStore } from 'vuex'
 
 export default createStore({
   state: {
     estadios:[
       {
+        id:0,
         titulo:"Wembley Stadium",
         pais:"Inglaterra",
         ciudad:"Londres",
@@ -14,6 +16,7 @@ export default createStore({
         cupo:2342
       },
       {
+        id:1,
         titulo:"Madison Square Garden",
         pais:"EEUU",
         ciudad:"Nueva York",
@@ -24,6 +27,7 @@ export default createStore({
         cupo:4534
       },
       {
+        id:2,
         titulo:"Philippe Chatrier",
         pais:"Fracia",
         ciudad:"Paris",
@@ -34,6 +38,7 @@ export default createStore({
         cupo:3456
       },
       {
+        id:3,
         titulo:"Gillette stadium",
         pais:"EEUU",
         ciudad:"Massachusetts",
@@ -44,6 +49,7 @@ export default createStore({
         cupo:7543
       },
       {
+        id:4,
         titulo:"Rogers Centre",
         pais:"Canadá",
         ciudad:"Toronto",
@@ -60,6 +66,15 @@ export default createStore({
   getters: {
   },
   mutations: {
+    guardar(state,array){
+      
+      let objeto=state.estadios.find(obj=>obj.id===array[0])
+      objeto.titulo=array[1];
+      objeto.ciudad=array[2];
+      objeto.pais=array[3];
+      objeto.info=array[4];
+      alert("La información se Editó exitosamente")
+    }
   },
   actions: {
   },
