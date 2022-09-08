@@ -61,6 +61,28 @@ export default createStore({
       }
       
        
+    ],
+    tribunas:[
+      {
+        nombre:"Premium Bobby More",
+        cupo:15000,
+        precio:97000
+      },
+      {
+        nombre:"VIP Club Wembley",
+        cupo:8000,
+        precio:87000
+      },
+      {
+        nombre:"Zona Plata",
+        cupo:1000,
+        precio:23000
+      },
+      {
+        nombre:"Occidental Alta",
+        cupo:5000,
+        precio:14000
+      }
     ]
   },
   getters: {

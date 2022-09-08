@@ -1,7 +1,7 @@
 <template>
   
     <div class="contenedor">
-      <p class="etiq">Estadios  ></p>
+      <p class="etiq">Estadios  > Detalles</p>
       <InfoEstadio></InfoEstadio>
       
     </div>

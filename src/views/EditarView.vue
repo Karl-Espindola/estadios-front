@@ -1,6 +1,6 @@
 <template>
     <div class="contenedor">
-        <p class="etiq">Estadios  > Editar</p>
+        <p class="etiq ru">Estadios  > Detalles > Editar</p>
         <EditarEstadio></EditarEstadio>
     </div>
 </template>
@@ -17,5 +17,9 @@ import EditarEstadio from '@/components/EditarEstadio.vue';
 <style >
 .contenedor{
     padding-left:70px;
+}
+.ru{
+    margin-left:0;
+    padding-left: 0;
 }
 </style>
