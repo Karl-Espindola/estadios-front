@@ -1,4 +1,5 @@
 <template>
+    <div>
     <div class="tcab">
         <div>
         <span class="nomEstadio">{{estadio.titulo}}</span>
@@ -6,17 +7,17 @@
         </div>
         <div class="icons">
             <router-link :to="{name:'editar', params:{id:JSON.stringify(estadio)}}">
-                <div class="ico">
+                <div class="ico ico-edi">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18.001" height="18.002" viewBox="0 0 18.001 18.002">
                         <g id="icon_editar" data-name="icon / editar" transform="translate(-136.249 -533.25)">
                             <path id="Trazado_20988" data-name="Trazado 20988" d="M555.021,382.656a3.19,3.19,0,0,1,2.256,5.446l-10.832,10.831a1.289,1.289,0,0,1-.506.312l-2.458.827-1.575.52a1.285,1.285,0,0,1-1.452-.472,1.274,1.274,0,0,1-.177-1.16l1.345-4.035a1.288,1.288,0,0,1,.311-.5l10.831-10.831A3.169,3.169,0,0,1,555.021,382.656Zm-9.6,15.181,10.8-10.8a1.69,1.69,0,1,0-2.39-2.39l-10.8,10.8-1.2,3.59,1.174-.388Z" transform="translate(-403.961 150.594)"/>
                             <path id="Línea_2174" data-name="Línea 2174" d="M3.444,4.194a.748.748,0,0,1-.53-.22L-.53.53A.75.75,0,0,1-.53-.53.75.75,0,0,1,.53-.53L3.974,2.914a.75.75,0,0,1-.53,1.28Z" transform="translate(147.618 536.449)"/>
                         </g>
                     </svg>
-
+                    <span class="span-editar">Editar</span>
                 </div>
             </router-link>
-            <div class="ico">
+            <div class="ico ico-eli" @click.prevent="ventana=true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="20.409" viewBox="0 0 17.5 20.409">
                     <g id="icon_Eliminar" data-name="icon / Eliminar" transform="translate(-187.25 -466.25)">
                         <path id="Trazado_20985" data-name="Trazado 20985" d="M190.3,385.184H203.39a.75.75,0,0,1,.75.75v12.571a4.194,4.194,0,0,1-4.187,4.191h-6.214a4.194,4.194,0,0,1-4.187-4.191V385.934A.75.75,0,0,1,190.3,385.184Zm12.339,1.5H191.051v11.821a2.692,2.692,0,0,0,2.687,2.691h6.214a2.692,2.692,0,0,0,2.687-2.691Z" transform="translate(-0.845 83.963)"/>
@@ -26,6 +27,7 @@
                         <path id="Trazado_20986" data-name="Trazado 20986" d="M200.118,387.057a.75.75,0,0,1-.637-.353l-.856-1.369a2.532,2.532,0,0,0-4.293,0l-.857,1.37a.75.75,0,0,1-1.272-.8l.857-1.369a4.032,4.032,0,0,1,6.838,0l.856,1.369a.75.75,0,0,1-.635,1.147Z" transform="translate(-0.479 83.605)"/>
                     </g>
                 </svg>
+                <span class="span-eliminar">Eliminar</span>
             </div>
       </div> 
     </div>
@@ -34,7 +36,7 @@
     <div>
     <div class="packEsta">
         <div class="conteImg">
-            <img :src='estadio.src' class="imgEstadio">
+            <img :src='estadio.src' class="imgEstadio"> 
             <div class="cTerr">
                 <span>{{estadio.nomTerreno}} </span>
                 <img :src="estadio.terreno" class="terr">
@@ -74,7 +76,7 @@
     </div>
 </div>
 <div class="contenedorTribunas">
-    <div class="añadir"><span>Trubunas</span><button class="icon">Añadir</button></div>
+    <div class="añadir"><span>Trubunas</span><button class="icon" @click.prevent="agregar=true">Añadir</button></div>
     <div class="tb">
         <div v-for="tribuna of tribunas" class="tribuna">
             
@@ -109,7 +111,7 @@
                 </div>
             
             <div class="icoEd">
-                <div class="ico ico1">
+                <div class="ico ico1" @click.prevent="agregar=true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18.001" height="18.002" viewBox="0 0 18.001 18.002">
                         <g id="icon_editar" data-name="icon / editar" transform="translate(-136.249 -533.25)">
                             <path id="Trazado_20988" data-name="Trazado 20988" d="M555.021,382.656a3.19,3.19,0,0,1,2.256,5.446l-10.832,10.831a1.289,1.289,0,0,1-.506.312l-2.458.827-1.575.52a1.285,1.285,0,0,1-1.452-.472,1.274,1.274,0,0,1-.177-1.16l1.345-4.035a1.288,1.288,0,0,1,.311-.5l10.831-10.831A3.169,3.169,0,0,1,555.021,382.656Zm-9.6,15.181,10.8-10.8a1.69,1.69,0,1,0-2.39-2.39l-10.8,10.8-1.2,3.59,1.174-.388Z" transform="translate(-403.961 150.594)"/>
@@ -117,7 +119,7 @@
                         </g>
                     </svg>
                 </div>
-                <div class="ico ico1">
+                <div class="ico ico1" @click.prevent="ventana=true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="20.409" viewBox="0 0 17.5 20.409">
                         <g id="icon_Eliminar" data-name="icon / Eliminar" transform="translate(-187.25 -466.25)">
                             <path id="Trazado_20985" data-name="Trazado 20985" d="M190.3,385.184H203.39a.75.75,0,0,1,.75.75v12.571a4.194,4.194,0,0,1-4.187,4.191h-6.214a4.194,4.194,0,0,1-4.187-4.191V385.934A.75.75,0,0,1,190.3,385.184Zm12.339,1.5H191.051v11.821a2.692,2.692,0,0,0,2.687,2.691h6.214a2.692,2.692,0,0,0,2.687-2.691Z" transform="translate(-0.845 83.963)"/>
@@ -133,6 +135,39 @@
         </div>
     </div>
 </div>
+<div v-bind="ventana" v-if="ventana" class="cVentana">
+        <div class="ventana">
+            <div class="agragar-div">
+                <span>Eliminar como administrador</span><span @click.prevent="ventana=false" class="close">x</span>
+            </div>
+            <br><p>¿Desea eliminar este estadio?</p><br>
+            <div class="btns">
+                <button @click.prevent="ventana=false" class="cancel">Cancelar</button>
+                <button class="">Eliminar</button>
+            </div>
+        </div>
+</div>
+<div v-bind="agregar" v-if="agregar" class="cVentana">
+        <div class="agregar">
+            <div class="agragar-div">
+                <span>Añadir tribuna</span><span @click.prevent="agregar=false" class="close">x</span>
+            </div>
+            <div class="formu">
+                <label for="">Nombre de la tribuna</label><br>
+                <input type="text" placeholder="Nombre"><br>
+                <label for="">Capacidad de espectadores</label><br>
+                <input type="number" placeholder="Número"><br>
+                <label for="">Valor de la entrada</label><br>
+                <input type="number" placeholder="Valor"><br>
+            </div>
+            <div class="btns">
+                <button @click.prevent="agregar=false" class="cancel">Cerrar</button>
+                <button class="">Añadir</button>
+            </div>
+        </div>
+</div>
+</div>
+
 </template>
 
 <script>
@@ -145,7 +180,9 @@ import { mapState } from 'vuex';
         },
         data(){
             return{
-                estadio:JSON.parse(this.$route.params.id)
+                estadio:JSON.parse(this.$route.params.id),
+                ventana:false,
+                agregar:false
             }
         },
         computed:{
@@ -275,6 +312,7 @@ padding:10px;
   display: flex;
   align-items: center;
   background-color: #905AFB;
+  position: relative;
 }
 
 .ico svg{
@@ -381,7 +419,93 @@ padding:10px;
    
 }
 .tb{
-    display:flex;
+    display:flex;   
+}
+.cVentana{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top:0;
+    left: 0;
+}
+.ventana{
+    
+    width: 300px;
+    margin: auto;
+    position: relative;
+    top:200px;
+    background-color: white;
+    padding: 10px 25px;
+    box-shadow: 0 0 3px;
+    border-radius: 7px;
+}
+
+
+.ventana span{
+    font-weight: bold;
+    text-align: left;
+}
+.ventana p{
+    font-size: 15px;
+    color: gray;
+    text-align: center;
+}
+.cancel{
+    background-color: white;
+    color: black;
+}
+.agregar{
+    width: 300px;
+    margin: auto;
+    position: relative;
+    top:200px;
+    background-color: white;
+    padding: 10px 25px;
+    box-shadow: 0 0 3px;
+    border-radius: 7px;
+}
+.agragar-div{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    margin: auto;
+    font-weight: bold;
+}
+.agregar label{
+    font-size: 12px;
+    color: gray;
     
 }
+.agregar input{
+    margin-bottom: 10px;
+    padding: 3px;
+    outline: none;
+}
+.formu{
+    margin: 30px auto;
+    width:60%;
+}
+.btns{
+  width: 80px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  margin: auto;
+}
+.close{
+    cursor: pointer;
+}
+.span-editar, .span-eliminar{
+    position: absolute;
+    display:none;
+    background-color: white;
+    font-size:10px;
+    border-radius: 10px;
+    padding: 2px 5px;
+    bottom: -15px;
+    left: 0px;
+}
+.ico-edi:hover .span-editar{ display: block;}
+.ico-eli:hover .span-eliminar{ display: block;}
 </style>
